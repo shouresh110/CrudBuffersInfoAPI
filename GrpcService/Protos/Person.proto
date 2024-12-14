@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService.Protos";
+
+package Person;
+
+message PersonRequest{
+	int32 Id = 1;
+}
+
+message PersonResponse{
+	 string FirstName  = 1;
+     string LastName = 2;
+     string NationalCode = 3;
+     string BirthDate = 4;
+}
+
+message PersonListResponse{
+    repeated PersonResponse person = 1;
+}
+
+service PersonDetails{
+    rpc GetPerson(PersonRequest) returns (PersonListResponse);
+}
